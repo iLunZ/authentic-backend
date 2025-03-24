@@ -6,9 +6,15 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
+    "build": "echo 'No build step required for Node.js app'",
     "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev",
-    "prisma:studio": "prisma studio"
+    "prisma:migrate": "prisma migrate deploy",
+    "prisma:studio": "prisma studio",
+    "deploy:setup": "bash scripts/setup.sh",
+    "deploy:start": "pm2 start src/server.js --name authentic-api",
+    "deploy:restart": "pm2 restart authentic-api",
+    "deploy:stop": "pm2 stop authentic-api",
+    "deploy:logs": "pm2 logs authentic-api"
   },
   "dependencies": {
     "@prisma/client": "6.5.0",
@@ -22,7 +28,8 @@
     "graphql-tag": "^2.12.6",
     "graphql-tools": "^9.0.18",
     "jsonwebtoken": "^9.0.2",
-    "prisma": "^6.5.0"
+    "prisma": "^6.5.0",
+    "pm2": "^5.3.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
@@ -30,6 +37,10 @@
     "@types/express": "^5.0.1",
     "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^22.13.11",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
