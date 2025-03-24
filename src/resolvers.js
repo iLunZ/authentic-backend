@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
-const SECRET_KEY = process.env.JWT_SECRET || "supersecret";
+const SECRET_KEY = process.env.JWT_SECRET || "allen-secret";
 
 const resolvers = {
   getCurrentUser: async (_, context) => {
