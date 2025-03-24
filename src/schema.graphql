@@ -1,0 +1,31 @@
+type User {
+  id: ID!
+  email: String!
+  name: String!
+  password: String!
+  failedAttempts: Int!
+  isLocked: Boolean!
+}
+
+type ResUser {
+  id: ID!
+  email: String!
+  name: String!
+}
+
+type AuthPayload {
+  token: String!
+  user: ResUser!
+}
+
+type Query {
+  getUser(email: String!): User
+  getCurrentUser: ResUser
+}
+
+type Mutation {
+  register(name: String!, email: String!, password: String!): AuthPayload
+  login(email: String!, password: String!): AuthPayload
+  updateUser(id: ID!, name: String!, email: String!): ResUser
+  logout: Boolean
+}
