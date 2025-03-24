@@ -52,6 +52,11 @@ JWT_SECRET="XXXX"
 ## Running the Application
 
 ### Development mode
+if you are the first time running the app, you need to run the following command to generate the prisma client
+```bash
+yarn prisma:generate
+```
+then you can start the server with the following command
 
 ```bash
 yarn run start
